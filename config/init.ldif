@@ -1,0 +1,10 @@
+dn: {{ env `SLAPD_SUFFIX` `dc=example,dc=com` }}
+objectclass: dcObject
+objectclass: organization
+o: {{ env `SLAPD_ORGANIZATION` `Example Inc.` }}
+dc: {{ env `SLAPD_DC` `example` }}
+
+dn: cn={{ env `SLAPD_ADMIN_USER` `admin` }},{{ env `SLAPD_SUFFIX` `dc=example,dc=com` }}
+objectclass: organizationalRole
+cn: {{ env `SLAPD_ADMIN_USER` `admin` }}
+
