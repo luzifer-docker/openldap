@@ -30,6 +30,7 @@ For the first run, one has to set at least the first two environment variables. 
 * `SLAPD_ORGANIZATION` (defaults to `Example Inc.`) - represents the human readable company name (e.g. `Example Inc.`).
 * `SLAPD_ADDITIONAL_SCHEMAS` - loads additional schemas provided in the `slapd` package that are not installed using the environment variable with comma-separated enties. As of writing these instructions, there are the following additional schemas available: `collective`, `corba`, `cosine`, `duaconf`, `dyngroup`, `inetorgperson`, `java`, `misc`, `nis`, `openldap`, `pmi` and `ppolicy`.
 * `SLAPD_ADDITIONAL_MODULES` - comma-separated list of modules to load. It will try to run `.ldif` files with a corresponsing name from the `module` directory. Currently only `memberof` and `ppolicy` are avaliable.
+* `SLAPD_CONFIG_PASSWORD` - If set the root password for `cn=config` is set (Connect using username and base-dn `cn=config`)
 
 
 ### Setting up ppolicy

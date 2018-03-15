@@ -23,6 +23,15 @@ objectClass: olcDatabaseConfig
 objectClass: olcFrontendConfig
 olcDatabase: frontend
 
+{{ if ne (env `SLAPD_CONFIG_PASSWORD` `NONE`) `NONE` }}
+dn: olcDatabase=config,cn=config
+objectClass: olcDatabaseConfig
+olcDatabase: config
+olcRootPW: {{ env `SLAPD_CONFIG_PASSWORD` `secret` }}
+olcAccess: to * by * none
+
+{{ end }}
+
 dn: olcDatabase=mdb,cn=config
 objectClass: olcDatabaseConfig
 objectClass: olcMdbConfig
