@@ -27,6 +27,17 @@ dn: olcDatabase=mdb,cn=config
 objectClass: olcDatabaseConfig
 objectClass: olcMdbConfig
 olcDatabase: mdb
+olcAccess: {0}to attrs=userPassword 
+ by self write 
+ by anonymous auth 
+ by dn="cn={{ env `SLAPD_ADMIN_USER` `admin` }},{{ env `SLAPD_SUFFIX` `dc=example,dc=com` }}" write 
+ by * none
+olcAccess: {1}to dn.base="" 
+ by * read
+olcAccess: {2}to * 
+ by self write 
+ by dn="cn={{ env `SLAPD_ADMIN_USER` `admin` }},{{ env `SLAPD_SUFFIX` `dc=example,dc=com` }}" write 
+ by * read
 olcSuffix: {{ env `SLAPD_SUFFIX` `dc=example,dc=com` }}
 olcRootDN: cn={{ env `SLAPD_ADMIN_USER` `admin` }},{{ env `SLAPD_SUFFIX` `dc=example,dc=com` }}
 olcRootPW: {{ env `SLAPD_PASSWORD` `secret` }}
