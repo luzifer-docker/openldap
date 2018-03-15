@@ -5,8 +5,8 @@ export SLAPD_CONFDIR=/etc/openldap/slapd.d
 export SLAPD_DATADIR=/var/lib/openldap/openldap-data
 
 # Hash passwords
-[ -n "${SLAPD_PASSWORD}" ] && export SLAPD_PASSWORD=$(slappasswd -h '{SSHA}' -s "${SLAPD_PASSWORD}" -n)
-[ -n "${SLAPD_CONFIG_PASSWORD}" ] && export SLAPD_CONFIG_PASSWORD=$(slappasswd -h '{SSHA}' -s "${SLAPD_CONFIG_PASSWORD}" -n)
+[ -n "${SLAPD_PASSWORD:-}" ] && export SLAPD_PASSWORD=$(slappasswd -h '{SSHA}' -s "${SLAPD_PASSWORD}" -n)
+[ -n "${SLAPD_CONFIG_PASSWORD:-}" ] && export SLAPD_CONFIG_PASSWORD=$(slappasswd -h '{SSHA}' -s "${SLAPD_CONFIG_PASSWORD}" -n)
 
 # Generate SLAPD_SUFFIX from given domain
 IFS="."
